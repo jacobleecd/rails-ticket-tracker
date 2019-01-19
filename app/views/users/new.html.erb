@@ -1,0 +1,12 @@
+<%= render 'shared/title', title: 'Sign up' %>
+
+<%= form_for @user do |f| %>
+  <%= render 'shared/errors', obj: @user %>
+  <dl>
+    <dt><%= f.label :name %></dt>
+    <dd><%= f.text_field :name %></dd>
+    <dt><%= f.label :password %></dt>
+    <dd><%= f.password_field :password %></dd>
+  </dl>
+  <%= f.submit "Sign up", class: 'btn' %>
+<% end %>

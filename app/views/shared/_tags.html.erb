@@ -1,0 +1,7 @@
+<% if tags.size > 0 %>
+  <% tags.uniq.each do |tag| %>
+    <em><%= tag.name %></em>,
+  <% end %>
+<% else %>
+-
+<% end %>

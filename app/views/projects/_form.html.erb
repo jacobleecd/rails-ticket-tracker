@@ -1,0 +1,12 @@
+<div>
+  <%= form_for @project do |f| %>
+  <%= render 'shared/errors', obj: @project %>
+    <dl>
+      <dt><%= f.label :name %></dt>
+      <dd><%= f.text_field :name %></dd>
+      <dt><%= f.label :description %></dt>
+      <dd><%= f.text_area :description %></dd>
+    </dl>
+    <%= f.submit (@project.new_record? ? 'Create' : 'Update'), class: 'btn' %>
+  <% end %>
+</div>

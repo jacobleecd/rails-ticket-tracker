@@ -1,0 +1,25 @@
+<% show_name ||= false %>
+<tr>
+  <% if show_name %>
+    <td>
+      <strong><%= link_to ticket.name, ticket_path(ticket) %></strong>
+    </td>
+    <td><!-- ticket.assignee  --></td>
+  <% else %>
+    <!-- TODO: add creator -->
+    <td></td>
+  <% end %>
+  <td><%= ticket.status %></td>
+  <td>
+    <%= render 'shared/tags', tags: ticket.tags %>
+  </td>
+  <% if logged_in? %>
+    <td>
+      <%= link_to 'Edit', edit_ticket_path(ticket) %>
+      <%= link_to 'Delete', ticket_path(ticket),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } 
+      %>
+    </td>
+  <% end %>
+</tr>

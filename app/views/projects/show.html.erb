@@ -1,0 +1,21 @@
+<%= render 'shared/title', title: "#{@project.name}" %>
+
+<p>
+  <%= @project. description %>
+</p>
+
+<% if logged_in? %>
+  <p>
+    <%= link_to 'Edit Project', edit_project_path(@project) %>
+    <%= link_to 'Delete Project', project_path(@project),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } 
+    %>
+  </p>
+<% end %>
+
+<%= render 'tickets/tickets', tickets: @project.tickets, show_name: true %>
+
+<% if logged_in? %>
+  <%= link_to 'New Ticket', new_ticket_path(@project), class: 'nav-link' %>
+<% end %>

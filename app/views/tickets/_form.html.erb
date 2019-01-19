@@ -1,0 +1,20 @@
+<div>
+  <%= form_for @ticket do |f| %>
+  <%= render 'shared/errors', obj: @ticket %>
+    <%= f.label :project %>
+    <%= f.collection_select :project_id, Project.all, :id, :name, id: :ticket_project_id  %>
+    <%= f.label :status %>
+    <%= f.select :status, Ticket::STATUSES.map{|t| [t, t]}, id: :ticket_status %>
+    <dl>
+      <dt><%= f.label :name %></dt>
+      <dd><%= f.text_field :name %></dd>
+      <dt><%= f.label :body %></dt>
+      <dd><%= f.text_area :body %></dd>
+      <dt><%= f.label :tags %></dt>
+      <dd><%= f.collection_select :tag_ids, Tag.alphabetical, :id, :name, {}, multiple: true, id: :ticket_tag_ids, size: Tag.count %></dd>
+    </dl>
+
+    <!-- TODO: add assigned to -->
+    <%= f.submit (@ticket.new_record? ? 'Create Ticket' : 'Update Ticket'), class: 'btn' %>
+  <% end %>
+</div>

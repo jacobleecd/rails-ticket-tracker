@@ -1,0 +1,13 @@
+<%= render 'shared/title', title: @ticket.name %>
+
+<p>
+  <%= @ticket.body %>
+</p>
+<p>
+  <strong>Tags:</strong>
+  <%= render 'shared/tags', tags: @ticket.tags %>
+</p>
+<% if logged_in? %>
+  <%= link_to 'Edit Ticket', edit_ticket_path(@ticket), class: 'nav-link' %>
+<% end %>
+<%= render 'tickets/tickets', tickets: [@ticket], show_name: false %>
