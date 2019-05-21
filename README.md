@@ -1,3 +1,3 @@
 # README
 
-A small ticket tracking app to learn rails.
+A ticket tracking app
